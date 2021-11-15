@@ -1,8 +1,15 @@
-
+import React from "react";
+import {BrowserRouter as Router,Switch,Routes,Route,Link,useRouteMatch,useParams} from "react-router-dom";
+import Home from "./components/Pages/Home";
 function App() {
   return (
     <>
-      <h1>Hello Musab</h1>
+    <Router>
+        <Routes>
+          <Route exact path="/" element={<Home/>}>
+          </Route>
+        </Routes>
+    </Router>
     </>
   );
 }

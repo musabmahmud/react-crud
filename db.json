@@ -1,15 +1,15 @@
 {
     "students": [{
         "id": 1,
-        "name": "musab",
+        "std-name": "musab",
         "email": "musab@gmail.com"
     },{
         "id": 2,
-        "name": "sinmim",
+        "std-name": "sinmim",
         "email": "sinmim@gmail.com"
     },{
         "id": 3,
-        "name": "sadia",
+        "std-name": "sadia",
         "email": "sadia@gmail.com"
     }]
 }
