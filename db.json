@@ -1,15 +1,29 @@
 {
-    "students": [{
-        "id": 1,
-        "std-name": "musab",
-        "email": "musab@gmail.com"
-    },{
-        "id": 2,
-        "std-name": "sinmim",
-        "email": "sinmim@gmail.com"
-    },{
-        "id": 3,
-        "std-name": "sadia",
-        "email": "sadia@gmail.com"
-    }]
+  "students": [
+    {
+      "id": 1,
+      "stdname": "musab",
+      "email": "musab@gmail.com"
+    },
+    {
+      "id": 2,
+      "stdname": "sinmim",
+      "email": "sinmim@gmail.com"
+    },
+    {
+      "id": 3,
+      "stdname": "sadia",
+      "email": "sadia@gmail.com"
+    },
+    {
+      "stdname": "tamim",
+      "email": "tamim100@gmail.com",
+      "id": 4
+    },
+    {
+      "stdname": "tamim",
+      "email": "tamim100@gmail.com",
+      "id": 5
+    }
+  ]
 }

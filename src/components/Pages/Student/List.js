@@ -1,12 +1,21 @@
-import React from 'react';
-import {Grid, TextField,TableContainer, Table,TableHead,TableRow,TableCell,TableBody, Button,spacing,Paper } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import {TableContainer, Table,TableHead,TableRow,TableCell,TableBody, Button,spacing,Paper } from '@mui/material';
 import {IconButton, Tooltip} from '@mui/material';import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-
+import Axios from "axios";
 import {Link} from "react-router-dom";
 const List = () => {
-    const tableHead = {backgroundColor: 'gray',color: 'white'};
+    const tableHead = {backgroundColor: 'gray', color: 'white'};
+    
+    const [students, setStudents] = useState([]);
+    useEffect(()=>{
+        fetch('http://localhost:3333/students')
+        .then(response => response.json())
+        .then(data => setStudents(data))
+    },[])
+
+    
     return (
         <>
         <TableContainer component={Paper}>
@@ -22,32 +31,36 @@ const List = () => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    <TableRow>
-                        <TableCell>1</TableCell>
-                        <TableCell>musab</TableCell>
-                        <TableCell>Email</TableCell>
-                        <TableCell>
-                        <Tooltip title="Delete">
-                            <IconButton>
-                                <Link to="/view/1"><VisibilityIcon /></Link>
-                            </IconButton>
-                        </Tooltip>
-                        </TableCell>
-                        <TableCell>
-                        <Tooltip title="Edit">
-                            <IconButton>
-                                <Link to="/edit/1"><EditIcon /></Link>
-                            </IconButton>
-                        </Tooltip>
-                        </TableCell>
-                        <TableCell>
-                        <Tooltip title="Delete">
-                            <IconButton>
-                                <Link to="/delete/1"><DeleteIcon /></Link>
-                            </IconButton>
-                        </Tooltip>
-                        </TableCell>
-                    </TableRow>
+                    {students.map((student,i) => {
+                        return(
+                            <TableRow key={i}>
+                                <TableCell>{i+1}</TableCell>
+                                <TableCell>{student.stdname}</TableCell>
+                                <TableCell>{student.email}</TableCell>
+                                <TableCell>
+                                <Tooltip title="Delete">
+                                    <IconButton>
+                                        <Link to={`/view/${student.id}`}><VisibilityIcon /></Link>
+                                    </IconButton>
+                                </Tooltip>
+                                </TableCell>
+                                <TableCell>
+                                <Tooltip title="Edit">
+                                    <IconButton>
+                                        <Link to={`/view/${student.id}`}><EditIcon /></Link>
+                                    </IconButton>
+                                </Tooltip>
+                                </TableCell>
+                                <TableCell>
+                                <Tooltip title="Delete">
+                                    <IconButton>
+                                        <Link to="/delete/1"><DeleteIcon /></Link>
+                                    </IconButton>
+                                </Tooltip>
+                                </TableCell>
+                            </TableRow>
+                        )
+                    })}
                 </TableBody>
             </Table>
         </TableContainer>
