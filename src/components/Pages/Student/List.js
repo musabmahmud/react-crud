@@ -3,8 +3,8 @@ import {TableContainer, Table,TableHead,TableRow,TableCell,TableBody, Button,spa
 import {IconButton, Tooltip} from '@mui/material';import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import Axios from "axios";
 import {Link} from "react-router-dom";
+import axios from 'axios';
 const List = () => {
     const tableHead = {backgroundColor: 'gray', color: 'white'};
     
@@ -15,7 +15,15 @@ const List = () => {
         .then(data => setStudents(data))
     },[])
 
-    
+    const handleDelete = async id => {
+        await axios.delete(`http://localhost:3333/students/${id}`);
+        const newstudent = students.filter((item) => {
+         // console.log(item);
+         return item.id !== id;
+        })
+        setStudents(newstudent);
+    }
+
     return (
         <>
         <TableContainer component={Paper}>
@@ -38,7 +46,7 @@ const List = () => {
                                 <TableCell>{student.stdname}</TableCell>
                                 <TableCell>{student.email}</TableCell>
                                 <TableCell>
-                                <Tooltip title="Delete">
+                                <Tooltip title="View">
                                     <IconButton>
                                         <Link to={`/view/${student.id}`}><VisibilityIcon /></Link>
                                     </IconButton>
@@ -47,14 +55,14 @@ const List = () => {
                                 <TableCell>
                                 <Tooltip title="Edit">
                                     <IconButton>
-                                        <Link to={`/view/${student.id}`}><EditIcon /></Link>
+                                        <Link to={`/edit/${student.id}`}><EditIcon /></Link>
                                     </IconButton>
                                 </Tooltip>
                                 </TableCell>
                                 <TableCell>
                                 <Tooltip title="Delete">
-                                    <IconButton>
-                                        <Link to="/delete/1"><DeleteIcon /></Link>
+                                    <IconButton onClick={() => handleDelete(student.id)}>
+                                        <DeleteIcon />
                                     </IconButton>
                                 </Tooltip>
                                 </TableCell>

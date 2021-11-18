@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import {TextField, Button, spacing } from '@mui/material';
+import {TextField, Button } from '@mui/material';
 import axios from 'axios';
 const Add = () => {
 
@@ -8,6 +8,8 @@ const Add = () => {
         stdname: "",
         email: "",
     });
+
+    const [status, setStatus] = useState()
 
     function onForm(e){
         setStudent({
@@ -19,15 +21,16 @@ const Add = () => {
     async function onFormSubmit(e){
         e.preventDefault()
         try{
-            await axios.post(`http://localhost:3333/students`, student)
+            await axios.post(`http://localhost:3333/students`, student);
+            setStatus(true)
         }
         catch(error){
             console.log("Something is Wrong");
         }
     }
-
-    console.log(student);
-
+    if(status){
+        window.location.reload(true);
+    }   
     return (
         <>
             <form>
@@ -37,5 +40,7 @@ const Add = () => {
             </form>
         </>
     );
+
+    
 };
 export default Add;

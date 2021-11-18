@@ -9,8 +9,6 @@ const Home = () => {
     const header = {backgroundColor: 'purple',color: 'white'};
     const bodyLeft = {backgroundColor: 'green',color: 'white'};
     const bodyRight = {backgroundColor: 'goldenrod',color: 'white'};
-
-    
     return (
         <>
             <Box textAlign="center" style={header}>
