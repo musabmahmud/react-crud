@@ -8,7 +8,7 @@ import {Link,useParams} from "react-router-dom";
 const List = () => {
     const tableHead = {backgroundColor: 'green'};
     const {id} = useParams();
-    const linkVal = `http://localhost:3333/students/${id}`;
+    const linkVal = `https://elated-lichterman-659a8d.netlify.app/students/${id}`;
     
     const [students, setStudents] = useState([]);
     useEffect(()=>{

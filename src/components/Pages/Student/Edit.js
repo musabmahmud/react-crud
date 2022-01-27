@@ -38,7 +38,7 @@ function Edit() {
     async function onFormSubmit(e) {
         e.preventDefault()
         try {
-         await axios.put(`http://localhost:3333/students/${id}`, student)
+         await axios.put(`https://elated-lichterman-659a8d.netlify.app/students/${id}`, student)
          navigate("/")
         } catch (error) {
          console.log("Something is Wrong");

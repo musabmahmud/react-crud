@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {TableContainer, Table,TableHead,TableRow,TableCell,TableBody, Button,spacing,Paper } from '@mui/material';
+import {TableContainer, Table,TableHead,TableRow,TableCell,TableBody, Paper } from '@mui/material';
 import {IconButton, Tooltip} from '@mui/material';import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -10,7 +10,7 @@ const List = () => {
     
     const [students, setStudents] = useState([]);
     useEffect(()=>{
-        fetch('http://localhost:3333/students')
+        fetch('https://elated-lichterman-659a8d.netlify.app/students')
         .then(response => response.json())
         .then(data => setStudents(data))
     },[])

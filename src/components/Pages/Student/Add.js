@@ -21,7 +21,7 @@ const Add = () => {
     async function onFormSubmit(e){
         e.preventDefault()
         try{
-            await axios.post(`http://localhost:3333/students`, student);
+            await axios.post(`https://elated-lichterman-659a8d.netlify.app/students`, student);
             setStatus(true)
         }
         catch(error){
